@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 40px;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .info-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .info-label {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    .info-value {
+        width: calc(100% - 220px);
+    }
+
+    @media (max-width: 600px) {
+        .info-card {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .info-label,
+        .info-value {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="container">
+    <h1>Добро пожаловать в Бугульминский медицинский колледж!</h1>
+    <p>Здесь вы найдете всю необходимую информацию о нашем учебном заведении.</p>
+    <br>
+    <h2>Почему выбирают нас?</h2>
+    <p>Наши преподаватели – ведущие специалисты в своей области.</p>
+    <br>
+    <h2>Наши услуги</h2>
+    <div class="info-card">
+        <span class="info-label">Высокое качество образования:</span>
+        <span class="info-value">Мы готовим лучших специалистов.</span>
+    </div>
+    <div class="info-card">
+        <span class="info-label">Практическая подготовка:</span>
+        <span class="info-value">Мы уделяем особое внимание практическим навыкам наших студентов.</span>
+    </div>
+    <div class="info-card">
+        <span class="info-label">Современные методики:</span>
+        <span class="info-value">Используем новейшие технологии и подходы в обучении.</span>
+    </div>
+    <br>
+    <h2>Присоединяйтесь к нашему сообществу</h2>
+    <p>Станьте частью нашего дружного коллектива и достигайте успеха вместе с нами.</p>
+    <button>Запишитесь на консультацию</button>
+    <br><br>
+    <footer style="text-align:center; margin-top: 20px;">
+        <p>© 2023 Медицинский колледж. Все права защищены.</p>
+    </footer>
+</div>
+
+{% endblock %}

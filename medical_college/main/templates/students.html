@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Информация для студентов{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+   .container {
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 40px;
+    }
+
+    p {
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .student-info {
+        margin-bottom: 30px;
+    }
+
+    .student-info p {
+        margin-bottom: 10px;
+    }
+
+    .student-info p:last-child {
+        margin-bottom: 0;
+    }
+
+    hr {
+        margin: 20px 0;
+        border: 1px solid #eee;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    th {
+        background-color: #f9f9f9;
+        text-align: left;
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+
+    td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
+
+    ul.program-list {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            width: 95%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    }
+</style>
+
+<div class="container">
+    <h1>Привет, {{ student.user.first_name }}!</h1>
+
+    <div class="student-info">
+        <p>Ваш курс: {{ student.course }}</p>
+        <p>Год обучения: {{ student.year_of_study }}</p>
+        <p>Номер зачетной книжки: {{ student.roll_number }}</p>
+    </div>
+
+    <hr />
+
+    <h2>Расписание занятий</h2>
+
+    <table class="schedule-table">
+        <tr>
+            <th>День недели</th>
+            <th>Время начала</th>
+            <th>Предмет</th>
+            <th>Преподаватель</th>
+        </tr>
+        {% for schedule in schedules %}
+        <tr>
+            <td>{{ schedule.day_of_week }}</td>
+            <td>{{ schedule.start_time }}</td>
+            <td>{{ schedule.subject }}</td>
+            <td>{{ schedule.teacher }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr />
+
+    <h2>Успеваемость</h2>
+    <table class="grades-table">
+        <tr>
+            <th>Предмет</th>
+            <th>Оценка</th>
+        </tr>
+        {% for grade in grades %}
+        <tr>
+            <td>{{ grade.subject }}</td>
+            <td>{{ grade.grade }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr />
+
+    <h2>Учебная программа</h2>
+    <ul class="program-list">
+        {% for subject in program %}
+        <li>{{ subject.name }}: {{ subject.description }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
